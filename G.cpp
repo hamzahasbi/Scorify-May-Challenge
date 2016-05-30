@@ -33,36 +33,40 @@ main()
 		for(int i=0;i<m;i++)
 		{
 			cin>>y;
-			it=p.begin();
 			if(y=="INSERT")	
 			{
 				cin>>a>>x;
-				if (a>p.size()) p.push_back(x);
+				it=p.begin();
+				if (a>=p.size()) p.push_back(x);
 				else 
 				{
 				    for(int j=1;j<=a;j++) it++;
 				    p.insert(it,x);
 				}
 			}
-			else
+			else if(y=="REMOVE")
 			{
+			    it=p.begin();
 				cin>>a;
-				if (a<=p.size()-1)
+				if (a<p.size())
 				{
 				    for(int j=1;j<=a;j++) it++;
 				    p.erase(it);
 				}
 			}
 		}
+		if(!p.empty())
+		{
 		for(it=p.begin();it!=p.end();it++)
 		cout<<*it<<endl;
 		it--;
 		for(int i=0;i<(*it).size();i++)
 		cout<<"-";
 		cout<<endl;
+		}
+		
 		
 	}
 
   return 0;
 }
-
